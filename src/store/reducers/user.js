@@ -1,4 +1,4 @@
-import { LOG_IN } from "../../constants";
+import { LOG_IN } from "../constants";
 const initialState = {
   user: null,
 };

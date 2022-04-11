@@ -14,15 +14,17 @@ const Login = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const dispatch = useDispatch()
+  
   const logIn = async () => {
     let isLogged = (email != null && password != null && password != "")
     ? true
     : false
-
+    console.log(email,password)
     try {
-      await AsyncStorage.setItem("user", JSON.stringify(isLogged))
+      await AsyncStorage.setItem("user",JSON.stringify(`mail${email} password:${password}`))
+      console.log('Logged')
     } catch(error){
-      console.log(error)
+      console.log(`error:${error}`)
     }
     dispatch(actions.user.setUser(isLogged))
   }
@@ -52,7 +54,7 @@ const Login = () => {
           label={<Text>Ingrese contraseña</Text>}
         />
 
-        <TouchableOpacity style={styles["loginBtn"]}>
+        <TouchableOpacity style={styles["loginBtn"]} onPress={() => logIn()}>
           <Text style={styles.text}>Iniciar Sesión</Text>
         </TouchableOpacity>
       </View>
