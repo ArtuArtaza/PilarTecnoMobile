@@ -19,7 +19,6 @@ const Login = () => {
     let isLogged = (email != null && password != null && password != "")
     ? true
     : false
-    console.log(email,password)
     try {
       await AsyncStorage.setItem("user",JSON.stringify(`mail${email} password:${password}`))
       console.log('Logged')
